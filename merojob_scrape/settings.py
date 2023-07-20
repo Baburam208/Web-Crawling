@@ -12,6 +12,9 @@ BOT_NAME = "merojob_scrape"
 SPIDER_MODULES = ["merojob_scrape.spiders"]
 NEWSPIDER_MODULE = "merojob_scrape.spiders"
 
+import os
+from os import path
+from datetime import datetime
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 # USER_AGENT = "merojob_scrape (+http://www.yourdomain.com)"
@@ -62,8 +65,12 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
+# ITEM_PIPELINES = {
+#     "merojob_scrape.pipelines.MerojobScrapePipeline": 300,
+# }
+
 ITEM_PIPELINES = {
-    "merojob_scrape.pipelines.MerojobScrapePipeline": 300,
+    "merojob_scrape.custom_db_pipeline.CustomDBPipeline": 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -91,3 +98,7 @@ ITEM_PIPELINES = {
 REQUEST_FINGERPRINTER_IMPLEMENTATION = "2.7"
 TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
 FEED_EXPORT_ENCODING = "utf-8"
+
+DB_FOLDER = "database"
+# DATABASE_NAME = "mydata.db"
+# CUSTOM_DB_PATH = path.abspath(os.path.join(os.getcwd(), "data", DATABASE_NAME))
