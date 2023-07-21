@@ -2,7 +2,7 @@ name: Scrapy Web Scraping
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # Runs the job every day at midnight
+    - cron: '*/5 * * * *'  # Runs the job every day at midnight
 
 jobs:
   scrape:
@@ -15,7 +15,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.8
+          python-version: 3.10.0
 
       - name: Install dependencies
         run: |
