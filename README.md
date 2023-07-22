@@ -11,20 +11,20 @@ We are going to scrapy [merojob.com](merojob.com) and IT & Communication categor
 
 Scrapy is a powerful web crawling and scraping framework in Python. It allows us to extract data from websites and save it in various formats. Below, we will provide a brief guide on how to use Scrapy for web crawling and scraping, along with some essential concepts and code examples.
 
-1. Install Scrapy:
+**1. Install Scrapy:**
 Make sure you have Python and pip installed, then open your terminal and run the following command to install Scrapy.
 ```bash
   pip install scrapy
 ```
 
-2. Create a new Scrapy project:
+**2. Create a new Scrapy project:**
 Navigate to the directory where you want to create your Scrapy project and run the following command.
 
 ```bash
   scrapy startproject project_name 
 ```
 
-3. Define the Spider:
+**3. Define the Spider:**
 A Spider is the core component of Scrapy that defines how to crawl a website and how to extract data from it. You need to create a new Python file within the "spiders" folder of your project and define your Spider class.
 
 For example, let's create a Spider to extract quotes from http://quotes.toscrape.com
@@ -52,13 +52,13 @@ class QuotesSpider(scrapy.Spider):
             yield response.follow(next_page, self.parse)
 ```
 
-4. Running the Spider:
+**4. Running the Spider:**
 To run the Spider and start crawling the website, use the following commnd in your project's root directory.
 ```bash
   scrapy crawl quotes
 ```
 
-5. Saving the Data:
+**5. Saving the Data:**
 By default, Scrapy outputs the scraped data to the console. However, you can save the data to a file or a database. For example, to save the data to a JSON file, use the following command.
 ```bash
   scrapy crawl quotes -o quotes.json 
@@ -68,7 +68,7 @@ This will save the extracted data in JSON format in a file named "quotes.json" i
 Scrapy provides many other features like handling cookies, user-agents, handling HTTP errors, using middlewares, etc. Check the official Scrapy documentation: https://docs.scrapy.org/
 
 ## Documentation of our Implementation
-1. Installation and project setup
+**1. Installation and project setup:**
 First we install Scrapy.
 
 ```bash
@@ -84,7 +84,7 @@ We change the directory as
 ``` 
 and enter inside root directory of our project. You can open your favourite code editor here, we use vscode.
 
-2. Create temporary container:
+**2. Create temporary container:**
 We visit the desired website and look for what data to extract such as title, product name, price, etc. In our case we extract data like job title, company name, location and desired skills.
 
 In the `items.py` file we create temporary containers (items)
@@ -110,7 +110,7 @@ class MerojobScrapeItem(scrapy.Item):
 
 Here each variables is assigned with scrapy.Field().
 
-3. Define a Spider:
+**3. Define a Spider:**
 Navigate inside `spiders` folder and create a file named `merojob_spider.py` in it. This is the main part where we crawl a website and define how to extract data from it. 
 First import scrapy and MerojobScrapeItem for items.py file 
 ```python 
@@ -208,7 +208,7 @@ class MerojobSpiderSpider(scrapy.Spider):
             yield response.follow(next_page, callback=self.parse)
 ```
 
-3.1. Web crawling and Following links:
+**3.1. Web crawling and Following links:**
 Get following links insice <a> anchor tag as follows.
 ```python 
   next_page = response.css("li.page-item a.pagination-next.page-link::attr(href)")
@@ -221,14 +221,14 @@ For every not None next_page we follow the links in next_page and callback the p
 ```
 
 
-4. Running scrapy 
+**4. Running scrapy:** 
 you can run the scrapy with following command.
 ```bash
   scrapy crawl merojob 
 ```
 This will scrape the web, you can see the output in the command while executing above command.
 
-5. Saving into .db file using SQLite3 database:
+**5. Saving into .db file using SQLite3 database:**
 For this we have develop pipeline, so that the crawled data will be saved as database.
 All these steps like database connection, schema/table creatiion, insertion, commit and close of the database is done in the `pipeline.py` file. But in our case we have created separate file named `custom_db_pipeline.py` file where all these happens. 
 
@@ -321,7 +321,7 @@ class CustomDBPipeline:
 ```
 With each run of the scrapy, the program will create new .db file and save it to the database directory. 
 
-6. Bypass restrictions using user-agent:
+**6. Bypass restrictions using user-agent:**
 Usually website restricts to crawl it. To avoid restrictions we create user-agents and crawl the website. This can be done using scrapy-user-agents package.
 
 First install `scrapy-user-agents` with following command.
