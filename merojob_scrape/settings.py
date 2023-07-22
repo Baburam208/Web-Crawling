@@ -12,9 +12,9 @@ BOT_NAME = "merojob_scrape"
 SPIDER_MODULES = ["merojob_scrape.spiders"]
 NEWSPIDER_MODULE = "merojob_scrape.spiders"
 
-import os
-from os import path
-from datetime import datetime
+# import os
+# from os import path
+# from datetime import datetime
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 # USER_AGENT = "merojob_scrape (+http://www.yourdomain.com)"
@@ -57,10 +57,10 @@ ROBOTSTXT_OBEY = True
 #    "merojob_scrape.middlewares.MerojobScrapeDownloaderMiddleware": 543,
 # }
 
-DOWNLOADER_MIDDLEWARES = {
-    "scrapy.downloadermiddlewares.useragent.UserAgentMiddleware": None,
-    "scrapy_user_agents.middlewares.RandomUserAgentMiddleware": 400,
-}
+# DOWNLOADER_MIDDLEWARES = {
+#     "scrapy.downloadermiddlewares.useragent.UserAgentMiddleware": None,
+#     "scrapy_user_agents.middlewares.RandomUserAgentMiddleware": 400,
+# }
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html

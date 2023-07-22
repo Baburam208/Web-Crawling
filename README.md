@@ -322,7 +322,7 @@ class CustomDBPipeline:
 With each run of the scrapy, the program will create new .db file and save it to the database directory. 
 
 **6. Bypass restrictions using user-agent:**
-Usually website restricts to crawl it. To avoid restrictions we create user-agents and crawl the website. This can be done using scrapy-user-agents package.
+Usually website restricts to crawl it and refuses to authorize. To avoid restrictions we create user-agents and crawl the website, scrapy-user-agents get list of user agents to rotate through (or rotating IP addresses) to get authorize from the server. This can be done using scrapy-user-agents package.
 
 First install `scrapy-user-agents` with following command.
 ```bash
