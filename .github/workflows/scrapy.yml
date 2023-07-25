@@ -2,7 +2,7 @@ name: Scrapy Web Scraping
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # Runs the job every 1 hours
+    - cron: '30 23 28-31 * *'  # Runs the job every month ends
 
 jobs:
   scrape:
